@@ -85,7 +85,14 @@ public class DepositoCombustible {
 	* 
 	*/
     public void fill(double amount){
-       depNivel = depNivel + amount;
+		if (amount<0)
+			System.out.println("No se permiten llenar en negativos.");
+		else 
+			if (depNivel+amount>depMax )
+				depNivel=depMax;
+			else
+				depNivel = depNivel + amount;
+       
     }
 
    /**
@@ -95,6 +102,12 @@ public class DepositoCombustible {
     * 
     */
 	public void consumir(double amount){
-       depNivel = depNivel - amount;
+		if (amount<0)
+			System.out.println("No se permiten consumos negativos.");
+		else 
+			if (depNivel<amount )
+				System.out.println("No se puede consumir mas de lo que queda en el deposito");
+			else
+				depNivel = depNivel - amount;
     }
 }
